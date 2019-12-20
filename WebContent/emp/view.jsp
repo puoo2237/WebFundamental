@@ -1,5 +1,5 @@
-<%@page import="kr.co.acorn.dto.DeptDto"%>
-<%@page import="kr.co.acorn.dao.DeptDao"%>
+<%@page import="kr.co.acorn.dto.EmpDto"%>
+<%@page import="kr.co.acorn.dao.EmpDao"%>
 <%@ page pageEncoding="utf-8"%>
 <%@ include file="../inc/header.jsp"%>
 
@@ -29,17 +29,20 @@
 		return;
 	}
 	
-	DeptDao dao = DeptDao.getInstance();
-	DeptDto dto = dao.select(no);
+	EmpDao dao = EmpDao.getInstance();
+	EmpDto dto = dao.select(no);
 	if(dto == null){
 		response.sendRedirect("list.jsp?page="+cPage);
 		return;
 	}
-	
-	// data 가져오기
 	String name = dto.getName();
-	String loc = dto.getLoc();
-	
+	String job = dto.getJob();
+	int mgr = dto.getMgr();
+	String hiredate = dto.getHiredate();
+	int sal = dto.getSal();
+	int comm = dto.getComm();
+	int deptNo = dto.getDeptDto().getNo();
+
 %>
 
 
@@ -59,48 +62,54 @@
 		<div class="col-lg-12">
 		
 		<!-- forms -->
-			<h3>사원등록</h3>
+			<h3>사원 상세보기</h3>
 			<form name = "f" method = "post" action = "save.jsp">
 				<div class="form-group row">
 					<label for="no" class="col-sm-2 col-form-label">사원번호</label>
 					<div class="col-sm-10">
-						<input type="number" id="no" name = "no">
+						<input class = "form-control" type="number" id="no" name = "no" value ="<%=no%>">
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="name" class="col-sm-2 col-form-label">이름</label>
 					<div class="col-sm-10">
-						<input type="text" id="name" name = "name">
+						<input class = "form-control" type="text" id="name" name = "name" value ="<%=name%>">
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="job" class="col-sm-2 col-form-label">직책</label>
 					<div class="col-sm-10">
-						<input type="text" id="job" name = "job">
+						<input class = "form-control" type="text" id="job" name = "job" value ="<%=job%>">
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="mgr" class="col-sm-2 col-form-label">사수</label>
 					<div class="col-sm-10">
-						<input type="number" id="mgr" name = "mgr">
+						<input class = "form-control" type="number" id="mgr" name = "mgr" value ="<%=mgr%>">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="hiredate" class="col-sm-2 col-form-label">입사날짜</label>
+					<div class="col-sm-10">
+						<input class = "form-control" type="text" id="hiredate" readonly = "readonly" name = "hiredate" value ="<%=hiredate%>">
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="sal" class="col-sm-2 col-form-label">월급</label>
 					<div class="col-sm-10">
-						<input type="number" id="sal" name = "sal">
+						<input class = "form-control" type="number" id="sal" name = "sal" value ="<%=sal%>">
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="comm" class="col-sm-2 col-form-label">상여금</label>
 					<div class="col-sm-10">
-						<input type="number" id="comm" name = "comm">
+						<input class = "form-control" type="number" id="comm" name = "comm" value ="<%=comm%>">
 					</div>
 				</div>
 				<div class="form-group row">
-					<label for="deptNo" class="col-sm-2 col-form-label">부서번호</label>
+					<label for="EmpNo" class="col-sm-2 col-form-label">부서번호</label>
 					<div class="col-sm-10">
-						<input type="number" id="deptNo" name = "deptNo">
+						<input class = "form-control" type="number" id="deptNo" name = "deptNo" value ="<%=deptNo%>">
 					</div>
 				</div>
 			</form>
@@ -123,14 +132,10 @@
 <!-- event 등록 -->
 <script>
 $(function(){
-	$("#no").focus();
+	$("#name").focus();
 	$("#updateEmp").click(function(){
 		// 자바 스크립트 유효성 검사
-		if($("#no").val().length == 0){
-			alert("사원번호를 입력하세요.")
-			$("#no").focus();
-			return;
-		}
+
 		if($("#name").val().length == 0){
 			alert("이름을 입력하세요.")
 			$("#name").focus();
@@ -146,9 +151,9 @@ $(function(){
 			$("#sal").focus();
 			return;
 		}
-		if($("#deptNo").val().length == 0){
+		if($("#DeptNo").val().length == 0){
 			alert("부서번호를 입력하세요.")
-			$("#deptNo").focus();
+			$("#DeptNo").focus();
 			return;
 		}
 		f.action = "update.jsp";
