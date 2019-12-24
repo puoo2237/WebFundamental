@@ -35,19 +35,19 @@
 				<div class="form-group row">
 					<label for="no" class="col-sm-2 col-form-label">부서번호</label>
 					<div class="col-sm-10">
-						<input type="number" id="no" name = "no">
+						<input type="number" class = "form-control" id="no" name = "no">
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="name" class="col-sm-2 col-form-label">부서이름</label>
 					<div class="col-sm-10">
-						<input type="text" id="name" name = "name">
+						<input type="text" class = "form-control"  id="name" name = "name">
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="loc" class="col-sm-2 col-form-label">부서위치</label>
 					<div class="col-sm-10">
-						<input type="text" id="loc" name = "loc">
+						<input type="text" class = "form-control" id="loc" name = "loc">
 					</div>
 				</div>
 			</form>
@@ -55,7 +55,9 @@
 			<!-- bottons -->
 			<div class = "text-right">
 				<a href="list.jsp?page=<%=cPage %>" class="btn btn-outline-secondary">목록</a>
+				<%if(memberDto != null){ %>
 				<button type="button" id = "saveDept" class="btn btn-outline-success">저장</button>
+				<%} %>
 			</div>
 
 		</div>

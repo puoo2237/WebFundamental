@@ -11,12 +11,9 @@ public class EmpDto {
 	private DeptDto deptDto;
 	
 	
-	public EmpDto() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	
 	public EmpDto(int no, String name, String job, int mgr, String hiredate, DeptDto deptDto) {
-		this(no, name, job, mgr, hiredate, 0, 0, deptDto);
+		this(no,name,job,mgr,hiredate,0,0,deptDto);
 	}
 	public EmpDto(int no, String name, String job, int mgr, String hiredate, int sal, int comm, DeptDto deptDto) {
 		super();
@@ -29,8 +26,6 @@ public class EmpDto {
 		this.comm = comm;
 		this.deptDto = deptDto;
 	}
-	
-	
 	public int getNo() {
 		return no;
 	}
@@ -79,6 +74,7 @@ public class EmpDto {
 	public void setDeptDto(DeptDto deptDto) {
 		this.deptDto = deptDto;
 	}
+	
 	
 	
 	

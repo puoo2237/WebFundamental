@@ -64,22 +64,22 @@
 				<div class="form-group row">
 					<label for="no" class="col-sm-2 col-form-label">부서번호</label>
 					<div class="col-sm-10">
-						<input type="number" id="no" name = "no" readonly = "readonly" value = <%=no %>>
+						<input type="number" class = "form-control" id="no" name = "no" readonly = "readonly" value = <%=no %>>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="name" class="col-sm-2 col-form-label">부서이름</label>
 					<div class="col-sm-10">
-						<input type="text" id="name" name = "name" value = <%=name %>>
+						<input type="text" class = "form-control" id="name" name = "name" value = <%=name %>>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label for="loc" class="col-sm-2 col-form-label">부서위치</label>
 					<div class="col-sm-10">
-						<input type="text" id="loc" name = "loc" value = <%=loc %>>
+						<input type="text" class = "form-control" id="loc" name = "loc" value = <%=loc %>>
 					</div>
 				</div>
-				<input type = "hidden" name = "page" value = "<%=cPage %>"/>
+				<input type = "hidden" class = "form-control" name = "page" value = "<%=cPage %>"/>
 			</form>
 
 			<!-- bottons -->

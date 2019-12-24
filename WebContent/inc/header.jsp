@@ -1,3 +1,4 @@
+<%@page import="kr.co.acorn.dto.MemberDto"%>
 <%@ page pageEncoding = "utf-8" %>
 
 <!doctype html>
@@ -26,10 +27,12 @@
 <%
 	// /dept/list.jsp, /emp/list.jsp, /notice/list.jsp
 	String uri = request.getRequestURI();
+	String contextPath = request.getContextPath();
 %>
 
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
+    
       <li class="nav-item <% if(uri.startsWith("/dept")){%>active<% }%>">
         <a class="nav-link" href="/dept/list.jsp">부서관리</a>
       </li>
@@ -39,9 +42,32 @@
       <li class="nav-item <% if(uri.startsWith("/crawling")){%>active<% }%>">
         <a class="nav-link" href="/notice/list.jsp">크롤링</a>
       </li>
-      <li class="nav-item <% if(uri.startsWith("/notice")){%>active<% }%>">
-        <a class="nav-link" href="/notice/list.jsp">공지사항</a>
+      <li class="nav-item <% if(uri.startsWith("/member")){%>active<% }%>">
+        <a class="nav-link" href="/member/list.jsp">회원관리</a>
+      </li>      
+      <li class="nav-item <% if(uri.startsWith("/file")){%>active<% }%>">
+        <a class="nav-link" href="/file/index.jsp">파일업로드</a>
       </li>
+      </ul>
+      <ul class="navbar-nav">
+      <%
+      	MemberDto memberDto = (MemberDto)session.getAttribute("member");
+      if(memberDto == null){
+      %>
+      <li class="nav-item" >
+        <a class="nav-link" href="/member/write.jsp">회원가입</a>
+      </li>s
+      <li class="nav-item" >
+        <a class="nav-link" href="/member/login.jsp">로그인</a>
+      </li>
+      <%}else{ %>
+          <li class="nav-item" >
+        <a class="nav-link" href="#"><%= memberDto.getName() %>님 환영합니다.</a>
+      </li>
+      <li class="nav-item" >
+        <a class="nav-link" href="/member/logout.jsp">로그아웃</a>
+      </li>
+      <%} %>
     </ul>
   </div>
 </nav>

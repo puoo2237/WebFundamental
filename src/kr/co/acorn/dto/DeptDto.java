@@ -4,6 +4,10 @@ public class DeptDto {
 	private int no;
 	private String name;
 	private String loc;
+	public DeptDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public DeptDto(int no, String name, String loc) {
 		super();
 		this.no = no;
@@ -28,10 +32,5 @@ public class DeptDto {
 	public void setLoc(String loc) {
 		this.loc = loc;
 	}
-	public DeptDto() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-		
 	
 }
